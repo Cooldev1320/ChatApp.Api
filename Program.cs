@@ -99,4 +99,6 @@ app.MapControllers();
 // Map SignalR hub with enhanced options
 app.MapHub<ChatHub>("/chathub");
 
-app.Run();
+// Configure port binding for production
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Run($"http://0.0.0.0:{port}");
